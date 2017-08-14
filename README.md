@@ -1,6 +1,10 @@
-# MyApp
+# Angular4 & Studio Example
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.0.
+
+## Setup
+
+Run `npm install` to install all dependencies.
 
 ## Development server
 
