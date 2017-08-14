@@ -63,11 +63,9 @@ export class AppComponent implements OnInit {
       scaleControl: true,
       toolbarControl: true,
       zoomControl: false,
-      bingKey: config.bingKey,
       challenge: config.challenge,
       mapworksPeliasPath: config.peliasPath,
       mapworksSessionPath: config.sessionPath,
-      mapzenKey: config.mapzenKey,
     };
 
     this.map = new window.Studio.core.Map(
