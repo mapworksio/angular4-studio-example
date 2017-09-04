@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
   template: `
     <div>
       This is the WidgetComponent !
+      <app-awesome></app-awesome>
     </div>
   `
 })
-export class WidgetComponent {
-}
+export class WidgetComponent { }

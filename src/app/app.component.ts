@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { WidgetModule } from './widget/widget.module';
+import {
+  Component,
+  AfterViewInit,
+  Injector
+} from '@angular/core';
+import { WidgetComponent } from './widget.component';
+import { DynamicLoader } from '../dynamicLoader';
 
 declare global {
   interface Window {
@@ -25,8 +29,11 @@ const config = {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements AfterViewInit {
   map: any;
+  constructor(
+    private _injector: Injector,
+  ) { }
 
   fetchStudio() {
     if (!window.Studio) {
@@ -122,11 +129,16 @@ export class AppComponent implements OnInit {
     );
 
     view.once('show', () => {
-      platformBrowserDynamic().bootstrapModule(WidgetModule);
+      // Get the element to attach the view
+      const el = view.el.children[0];
+
+      const loader = new DynamicLoader(this._injector);
+
+      loader.injectComponent(WidgetComponent, el);
     });
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.fetchStudio();
   }
 }
